@@ -20,4 +20,5 @@
     ├── templates
     ├── zos_ping.yml
     └── zosmf_query_datasets.yml
+        changed
 ```
