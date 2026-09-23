@@ -1,4 +1,3 @@
-# Play book made with debug var anda register to gathr facts to be called. 
 - name: Check STCs
   hosts: zos
   gather_facts: false
