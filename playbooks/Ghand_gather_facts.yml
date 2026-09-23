@@ -7,11 +7,11 @@
   - name: Return z/OS facts.
     ibm.ibm_zos_core.zos_gather_facts:
       gather_subset: sys
-    register: {{ result }}
+    register: "{{ result }}"
 
   - name: Display all variables/facts known for a host
     ansible.builtin.debug:
-     var: {{ result }}
+     var: "{{ result }}"
      verbosity: 4
 #        - "System Info: {{ result | to_nice_json }}"
 #    - name: Return all available z/OS facts.
