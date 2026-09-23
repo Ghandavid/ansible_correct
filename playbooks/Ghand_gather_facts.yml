@@ -6,7 +6,7 @@
   tasks:
   - name: Return z/OS facts.
     ibm.ibm_zos_core.zos_gather_facts:
-    gather_subset: sys
+      gather_subset: sys
     register: result
 
   - name: Display Host Variables
