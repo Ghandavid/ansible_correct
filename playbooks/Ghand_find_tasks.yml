@@ -5,7 +5,7 @@
 
   tasks:
   - name: Query a job with a job name of '*'
-    zos_job_query:
+    ibm.ibm_zos_core.zos_job_query:
        job_name: "*"
        job-id: "STC*"
   
