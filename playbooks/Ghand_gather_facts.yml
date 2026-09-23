@@ -13,7 +13,7 @@
     ansible.builtin.debug:
       msg:
         - "---Prin your variables data here ---"
-        - "System Name: {{ zos_sysname | to_nice_json }}"
+        - "System Info: {{ result | to_nice_json }}"
 #    - name: Return all available z/OS facts.
 #      ibm.ibm_zos_core.zos_gather_facts:
 
