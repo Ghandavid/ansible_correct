@@ -11,7 +11,7 @@
 
   - name: Display Host Variables
     ansible.builtin.debug:
-      Var: result
+      var: result
     register: time2filt
 
   - name: Filter the results to job_class.job
