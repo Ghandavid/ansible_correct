@@ -9,7 +9,8 @@
       gather_subset:
       - ipl
       - sys
-      filter: parmlib
+      filter: 
+        - "*parmlib*"
     register: result
 
   - name: Print return information from the previous task
