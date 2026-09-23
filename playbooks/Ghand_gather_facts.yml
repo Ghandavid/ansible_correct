@@ -14,7 +14,6 @@
 
   - name: Print return information from the previous task
     ansible.builtin.debug:
-      var: result
       msg: "The gathered facts are: {{ result }}" 
 #    - name: Return all available z/OS facts.
 #      ibm.ibm_zos_core.zos_gather_facts:
