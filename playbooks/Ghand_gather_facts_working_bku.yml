@@ -1,3 +1,4 @@
+# Play book made with debug msg and register to gather facts to be called. 
 - name: Gather z/OS facts
   hosts: zos
   gather_facts: false

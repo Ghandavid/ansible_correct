@@ -1,18 +1,15 @@
 # Play book made with debug var anda register to gathr facts to be called. 
-- name: Gather z/OS facts
+- name: Check STCs
   hosts: zos
   gather_facts: false
   environment: "{{ environment_vars }}"
 
   tasks:
-  - name: Return z/OS facts.
-    ibm.ibm_zos_core.zos_gather_facts:
-      gather_subset: sys
-    register: result
-
-  - name: Display all variables/facts known for a host
-    ansible.builtin.debug:
-     var: result     
+    - name: Query a job with a job name of '*'
+      zos_job_query:
+        job_name: "*"
+        job-id: "*"
+  
 #        - "System Info: {{ result | to_nice_json }}"
 #    - name: Return all available z/OS facts.
 #      ibm.ibm_zos_core.zos_gather_facts:
