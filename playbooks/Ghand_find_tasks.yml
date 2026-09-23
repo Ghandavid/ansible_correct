@@ -6,7 +6,7 @@
   tasks:
   - name: Query a job with a job name of '*'
     ibm.ibm_zos_core.zos_job_query:
-       job_name: "STC*"
+       job_name: "*"
   
 #        - "System Info: {{ result | to_nice_json }}"
 #    - name: Return all available z/OS facts.
