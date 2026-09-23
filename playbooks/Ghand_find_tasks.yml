@@ -16,7 +16,7 @@
 
   - name: Filter the results to job_class.job
     ansible.builtin.set_fact:
-      factset: "{{ time2filt.jobs | selectattr('job_class', 'defined') | list }}"
+      factset: "{{ time2filt.jobs | selectattr('job_class', 'defined') | selectattr('job_class', 'equalto', 'STC') | list }}"
 #        - "System Info: {{ result | to_nice_json }}"
 #    - name: Return all available z/OS facts.
 #      ibm.ibm_zos_core.zos_gather_facts:
