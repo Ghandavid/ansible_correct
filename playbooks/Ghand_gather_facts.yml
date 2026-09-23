@@ -3,8 +3,9 @@
   gather_facts: false
   environment: "{{ environment_vars }}"
 
-- name: Return all available z/OS facts.
-  ibm.ibm_zos_core.zos_gather_facts:
+  tasks:
+    - name: Return all available z/OS facts.
+      ibm.ibm_zos_core.zos_gather_facts:
 
 #- name: Return z/OS facts in the systems subset ('sys').
 #  ibm.ibm_zos_core.zos_gather_facts:
