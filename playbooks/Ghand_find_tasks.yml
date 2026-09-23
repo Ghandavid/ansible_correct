@@ -4,10 +4,10 @@
   environment: "{{ environment_vars }}"
 
   tasks:
-    - name: Query a job with a job name of '*'
-      zos_job_query:
-        job_name: "*"
-        job-id: "*"
+  - name: Query a job with a job name of '*'
+    zos_job_query:
+       job_name: "*"
+       job-id: "STC*"
   
 #        - "System Info: {{ result | to_nice_json }}"
 #    - name: Return all available z/OS facts.
