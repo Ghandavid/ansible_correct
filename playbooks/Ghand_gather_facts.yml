@@ -11,7 +11,7 @@
 
   - name: Display all variables/facts known for a host
     ansible.builtin.debug:
-     var: hostvars[inventory_hostname]
+     var: result
      verbosity: 4
 #        - "System Info: {{ result | to_nice_json }}"
 #    - name: Return all available z/OS facts.
