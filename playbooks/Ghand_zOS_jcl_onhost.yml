@@ -1,0 +1,18 @@
+# Writes the JCL inline, submits it, and prints the spool output.
+- name: Hello World JCL from local job
+  hosts: zoslab
+  gather_facts: false
+  collections:
+    - ibm.ibm_zos_core
+  environment: "{{ environment_vars }}"
+
+  tasks:
+  - name: Convert local JCL to IBM-037 and submit the job.
+    zos_job_submit:
+      src: "GAMA10.JCL.CNTL(HELOWRLD)"
+      location: DATA_SET
+    register: job_output
+
+  - name: Show job ID and return code
+    debug:
+      var: job_output
