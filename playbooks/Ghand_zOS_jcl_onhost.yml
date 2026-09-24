@@ -17,7 +17,6 @@
       space_type: cyl
       record_format: fb
       record_length: 80
-      replace: true
     register: job_pds_make
   
   - name: Copy a local file to a PDS member and convert encoding
