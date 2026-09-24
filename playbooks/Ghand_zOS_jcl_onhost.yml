@@ -17,9 +17,8 @@
       space_type: cyl
       record_format: fb
       record_length: 80
-      state: absent
-      replace: true
-      force: true
+      state: present
+      replace: false
     register: job_pds_make
   
   - name: Copy a local file to a PDS member and convert encoding
