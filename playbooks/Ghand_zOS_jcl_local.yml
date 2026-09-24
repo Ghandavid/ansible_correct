@@ -15,7 +15,7 @@
   tasks:
     - name: Render JCL locally on control node
       ansible.builtin.template:
-        src: templates/Ghand_zOS_DS_from_control_node.j2
+        src: JCL/hello_world.jcl.j2
         dest: "{{ jcl_path }}"
       delegate_to: localhost
 
