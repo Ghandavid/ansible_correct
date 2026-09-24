@@ -33,8 +33,9 @@
     zos_job_submit:
       src: "GAMA10.JCL.CNTL2(HELOWRLD)"
       location: DATA_SET
+      wait_time_s: 30
     register: job_sub
-    wait_time_s: 30
+    
 
   - name: Show submit output and return code
     debug:
