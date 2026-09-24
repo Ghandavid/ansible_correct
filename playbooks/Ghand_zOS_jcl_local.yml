@@ -18,4 +18,4 @@
 
   - name: Show job ID and return code
     debug:
-      var: job_output.jobs[0].job_id
+      var: job_output
