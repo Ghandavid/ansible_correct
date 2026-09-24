@@ -14,3 +14,8 @@
       encoding:
         from: ISO8859-1
         to: IBM-037
+    register: job_output
+
+  - name: Show job ID and return code
+    debug:
+      var: job_output.jobs[0].job_id
