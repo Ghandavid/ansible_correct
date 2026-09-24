@@ -26,7 +26,7 @@
       encoding:
         from: UTF-8
         to: IBM-037
-    register: Write_to_member
+    register: write_to_member
     
   - name: Convert local JCL to IBM-037 and submit the job.
     zos_job_submit:
@@ -40,7 +40,7 @@
 
   - name: Show submit output and return code
     debug:
-      var: Write_to_member
+      var: write_to_member
 
   - name: Show submit output and return code
     debug:
