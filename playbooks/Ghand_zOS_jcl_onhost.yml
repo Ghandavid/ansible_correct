@@ -10,7 +10,7 @@
 
   - name: Create a PDS data set if it does not exist
     zos_data_set:
-      name: 'GAMA10.JCL.CNTL2(HELOWRLD)'
+      name: GAMA10.JCL.CNTL2
       type: pds
       space_primary: 15
       space_secondary: 5
@@ -18,11 +18,16 @@
       record_format: fb
       record_length: 80
     register: job_pds_make
+
+  - name: Create member
+  ibm.ibm_zos_core.zos_data_set:
+    name: GAMA10.JCL.CNTL2(HELOWRLD)
+    type: member
   
   - name: Copy a local file to a PDS member and convert encoding
     zos_copy:
       src: "{{ playbook_dir }}/JCL/hello_world.jcl"
-      dest: 'GAMA10.JCL.CNTL2(HELOWRLD)'
+      dest: GAMA10.JCL.CNTL2(HELOWRLD)
       encoding:
         from: UTF-8
         to: IBM-037
