@@ -11,12 +11,14 @@
   - name: Create a PDS data set if it does not exist
     zos_data_set:
       name: GAMA10.JCL.CNTL3
-      type: pdse
+      type: member  
       space_primary: 15
       space_secondary: 5
       space_type: cyl
       record_format: fb
       record_length: 80
+      state: absent
+      force: true
     register: job_pds_make
   
   - name: Copy a local file to a PDS member and convert encoding
