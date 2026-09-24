@@ -7,12 +7,41 @@
   environment: "{{ environment_vars }}"
 
   tasks:
+
+  - name: Create a PDS data set if it does not exist
+    zos_data_set:
+      name: GAMA10.JCL.CNTL2(HELOWRLD)
+      type: pds
+      space_primary: 15
+      space_secondary: 5
+      space_type: cyl
+      record_format: fb
+      record_length: 80
+    register: job_pds_make
+  
+  - name: Copy a local file to a PDS member and convert encoding
+    zos_copy:
+      src: "{{ playbook_dir }}/JCL/hello_world.jcl"
+      dest: GAMA10.JCL.CNTL2(HELOWRLD)
+      encoding:
+        from: UTF-8
+        to: IBM-037
+    Register: Write_to_member
+    
   - name: Convert local JCL to IBM-037 and submit the job.
     zos_job_submit:
-      src: "GAMA10.JCL.CNTL(HELOWRLD)"
+      src: "GAMA10.JCL.CNTL2(HELOWRLD)"
       location: DATA_SET
-    register: job_output
+    register: job_sub
 
-  - name: Show job ID and return code
+  - name: Show submit output and return code
     debug:
-      var: job_output
+      var: job_sub
+
+  - name: Show submit output and return code
+    debug:
+      var: Write_to_member
+
+  - name: Show submit output and return code
+    debug:
+      var: job_pds_make
