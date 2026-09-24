@@ -17,7 +17,6 @@
       space_type: cyl
       record_format: fb
       record_length: 80
-      replace: true
       force: true
     register: job_pds_make
   
