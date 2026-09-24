@@ -11,7 +11,7 @@
   - name: Create a PDS data set if it does not exist
     zos_data_set:
       name: GAMA10.JCL.CNTL3
-      type: member  
+      type: pdse  
       space_primary: 15
       space_secondary: 5
       space_type: cyl
