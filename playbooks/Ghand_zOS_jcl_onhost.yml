@@ -18,6 +18,7 @@
       record_format: fb
       record_length: 80
       state: absent
+      replace: true
       force: true
     register: job_pds_make
   
