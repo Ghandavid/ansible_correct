@@ -24,7 +24,7 @@
   - name: Copy a local file to a PDS member and convert encoding
     zos_copy:
       src: "{{ playbook_dir }}/JCL/hello_world.jcl"
-      dest: GAMA10.JCL.CNTL3(HELOWRLD)
+      dest: "GAMA10.JCL.CNTL3(HELOWRLD)"
       encoding:
         from: UTF-8
         to: IBM-037
@@ -34,7 +34,6 @@
     zos_job_submit:
       src: "GAMA10.JCL.CNTL3(HELOWRLD)"
       location: DATA_SET
-      wait_time_s: 30
     register: job_sub
     
 
