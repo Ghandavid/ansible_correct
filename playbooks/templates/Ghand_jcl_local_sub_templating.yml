@@ -18,7 +18,7 @@
     - name: call role to render JCL
       ansible.builtin.include_role:
         name: render_jcl_role 
-        tasks from: main.yml  
+        tasks_from: main.yml  
 
     - name: Delete temporary JCL dataset if it exists      
       ibm.ibm_zos_core.zos_data_set:
