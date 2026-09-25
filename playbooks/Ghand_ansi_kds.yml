@@ -9,6 +9,21 @@
     vsam_name: GAMA10.VSAM.KSDS
 
   tasks:
+  - name: Delete KSDS
+    ibm.ibm_zos_core.zos_mvs_raw:
+      program_name: IDCAMS
+      dds:
+        - dd_input:
+            dd_name: SYSIN
+            content: |
+              DELETE {{ vsam_name }}
+        - dd_output:
+            dd_name: SYSPRINT
+            return_content:
+              type: text
+    register: delete_result
+    failed_when: false
+
   - name: Create VSAM KSDS
     zos_data_set:
       name: "{{ vsam_name }}"
