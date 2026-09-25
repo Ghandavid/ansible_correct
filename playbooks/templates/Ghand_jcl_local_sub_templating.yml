@@ -7,8 +7,6 @@
     hlq: GAMA10
     mlq: JCL
     llq: CNTL3
-    hlq2: GAMA10
-    mlq2: JCL
     llq2: CNTL4
     libname: JCL 
     primary_allocation: 2
