@@ -11,7 +11,7 @@
   tasks:
   - name: Create VSAM KSDS
     zos_data_set:
-      name: {{ vsam_name }}
+      name: "{{ vsam_name }}"
       type: ksds
       state: present
       record_format: fb
@@ -36,7 +36,7 @@
       - dd_data:
           dd_name: SYSIN
           content: |
-            REPRO INFILE(INDD) OUTDATASET('{{ vsam_name }}')
+            REPRO INFILE(INDD) OUTDATASET('"{{ vsam_name }}"')
       - dd_data:
           dd_name: INDD
           content: |
