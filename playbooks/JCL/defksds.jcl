@@ -1,4 +1,4 @@
-/IBMUSERK JOB ,'DEFINE KSDS',
+//IBMUSERK JOB ,'DEFINE KSDS',
 //         CLASS=A,MSGCLASS=X,
 //         MSGLEVEL=(1,1),NOTIFY=&SYSUID
 //********************************************************************
