@@ -37,7 +37,7 @@
       record_format: fb
       record_length: 80
       space_primary: 2
-      space_secondary: 2
+      space_secondary: 1
       space_type: cyl
       key_length: 4
       key_offset: 0
@@ -48,6 +48,30 @@
     debug:
       var: create_ksds_result
 
+  - name: Create input sequential data set
+    zos_data_set:
+      name: "{{ vsam_name }}.INPUT"
+      type: seq
+      state: present
+      record_format: fb
+      record_length: 80
+      space_primary: 1
+      space_secondary: 1
+      space_type: cyl
+    register: create_input_result
+
+  - name: Populate input sequential data set
+    zos_copy:
+      content: |
+        0001TEST RECORD 1
+        0002TEST RECORD 2
+      dest: "{{ vsam_name }}.INPUT"
+    register: populate_input_result
+
+  - name: Show populate input result
+    debug:  
+      var: populate_input_result
+
   - name: Load records into KSDS using IDCAMS REPRO
     ibm.ibm_zos_core.zos_mvs_raw:
       program_name: IDCAMS
@@ -57,11 +81,9 @@
             dd_name: SYSIN
             content: |
               REPRO INFILE(INDD) OUTDATASET({{ vsam_name }})
-        - dd_input:
+        - dd_data_set:
             dd_name: INDD
-            content: |
-              0001TEST RECORD 1
-              0002TEST RECORD 2
+            data_set_name: "{{ vsam_name }}.INPUT"
         - dd_output:
             dd_name: SYSPRINT
             return_content:
