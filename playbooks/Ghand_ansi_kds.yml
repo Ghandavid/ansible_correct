@@ -24,6 +24,10 @@
     register: delete_result
     failed_when: false
 
+  - name: Show delete result
+    debug:
+      var: delete_result
+
   - name: Create VSAM KSDS
     zos_data_set:
       name: "{{ vsam_name }}"
