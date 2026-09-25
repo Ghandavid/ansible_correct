@@ -5,12 +5,17 @@
   collections:
     - ibm.ibm_zos_core
   environment: "{{ environment_vars }}"
+  vars:
+    hlq: "GAMA10"
+    mlq: "JCL"
+    llq: "CNTL3"
+    member_name: "HELOWRLD"
 
   tasks:
 
   - name: Create a PDS data set if it does not exist
     zos_data_set:
-      name: GAMA10.JCL.CNTL3
+      name: "{{ hlq }}.{{ mlq }}.{{ llq }}"
       type: pdse  
       space_primary: 15
       space_secondary: 5
@@ -24,7 +29,7 @@
   - name: Copy a local file to a PDS member and convert encoding
     zos_copy:
       src: "{{ playbook_dir }}/JCL/hello_world.jcl"
-      dest: "GAMA10.JCL.CNTL3(HELOWRLD)"
+      dest: "{{ hlq }}.{{ mlq }}.{{ llq }}({{ member_name }})"
       encoding:
         from: UTF-8
         to: IBM-037
@@ -32,7 +37,7 @@
     
   - name: Convert local JCL to IBM-037 and submit the job.
     zos_job_submit:
-      src: "GAMA10.JCL.CNTL3(HELOWRLD)"
+      src: "{{ hlq }}.{{ mlq }}.{{ llq }}({{ member_name }})"
       location: DATA_SET
     register: job_sub
     
