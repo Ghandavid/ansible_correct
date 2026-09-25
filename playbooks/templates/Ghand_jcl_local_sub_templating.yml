@@ -11,13 +11,13 @@
     libname: JCL 
     primary_allocation: 2
     secondary_allocation: 4 
-    jcl_path: "{{ playbook_dir }}/templates/copy_jcl.j2"
+    jcl_path: "{{ playbook_dir }}/copy_jcl.j2"
     jcl_dataset_name: "{{ job_owner }}.TEMP.JCL"
 
   tasks:
     - name: Render JCL locally on control node
       ansible.builtin.template:
-        src: templates/copy_jcl.j2
+        src: copy_jcl.j2
         dest: "{{ jcl_path }}"
       delegate_to: localhost
 
