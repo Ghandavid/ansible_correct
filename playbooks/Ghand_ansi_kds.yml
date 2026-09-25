@@ -21,7 +21,7 @@
       space_type: cyl
       key_length: 4
       key_offset: 0
-      cisize: 4096
+#      cisize: 4096
     register: create_ksds_result
 
   - name: Show job ID and return code
