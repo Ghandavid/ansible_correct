@@ -55,7 +55,7 @@
         - dd_input:
             dd_name: SYSIN
             content: |
-              REPRO INFILE(INDD) OUTDATASET('"{{ vsam_name }}"')
+              REPRO INFILE(INDD) OUTDATASET("{{ vsam_name }}")
         - dd_input:
             dd_name: INDD
             content: |
