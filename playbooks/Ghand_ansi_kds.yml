@@ -33,11 +33,11 @@
       program_name: IDCAMS
       auth: false
       dds:
-        - dd_data:
+        - dd_input:
             dd_name: SYSIN
             content: |
               REPRO INFILE(INDD) OUTDATASET('"{{ vsam_name }}"')
-        - dd_data:
+        - dd_input:
             dd_name: INDD
             content: |
               0001TEST RECORD 1
