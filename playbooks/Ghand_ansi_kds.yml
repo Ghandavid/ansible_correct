@@ -12,6 +12,7 @@
   - name: Delete KSDS
     ibm.ibm_zos_core.zos_mvs_raw:
       program_name: IDCAMS
+      auth: true
       dds:
         - dd_input:
             dd_name: SYSIN
