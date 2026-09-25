@@ -6,8 +6,8 @@
     job_owner: IBMUSER
     hlq: GAMA10
     mlq: JCL
-    llq: CNTL3
-    llq2: CNTL4
+    llq: CNTL4
+    llq2: CNTL5
     libname: JCL 
     primary_allocation: 2
     secondary_allocation: 4 
