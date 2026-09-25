@@ -6,7 +6,7 @@
     - ansible.builtin
   environment: "{{ environment_vars }}"
   vars:
-    vsam_name: GAM10.VSAM.KSDS
+    vsam_name: GAMA10.VSAM.KSDS
 
   tasks:
   - name: Create VSAM KSDS
@@ -24,34 +24,34 @@
       cisize: 4096
     register: create_ksds_result
 
-- name: Show job ID and return code
-  debug:
-    var: create_ksds_result
+  - name: Show job ID and return code
+    debug:
+      var: create_ksds_result
 
-- name: Load records into KSDS using IDCAMS REPRO
-  ibm.ibm_zos_core.zos_mvs_raw:
-    program_name: IDCAMS
-    auth: false
-    dds:
-      - dd_data:
-          dd_name: SYSIN
-          content: |
-            REPRO INFILE(INDD) OUTDATASET('"{{ vsam_name }}"')
-      - dd_data:
-          dd_name: INDD
-          content: |
-            0001TEST RECORD 1
-            0002TEST RECORD 2
-      - dd_output:
-          dd_name: SYSPRINT
-          return_content:
-            type: text
-      - dd_output:
-          dd_name: SYSOUT
-          return_content:
-            type: text
-  register: load_ksds_result
+  - name: Load records into KSDS using IDCAMS REPRO
+    ibm.ibm_zos_core.zos_mvs_raw:
+      program_name: IDCAMS
+      auth: false
+      dds:
+        - dd_data:
+            dd_name: SYSIN
+            content: |
+              REPRO INFILE(INDD) OUTDATASET('"{{ vsam_name }}"')
+        - dd_data:
+            dd_name: INDD
+            content: |
+              0001TEST RECORD 1
+              0002TEST RECORD 2
+        - dd_output:
+            dd_name: SYSPRINT
+            return_content:
+              type: text
+        - dd_output:
+            dd_name: SYSOUT
+            return_content:
+              type: text
+    register: load_ksds_result
 
-- name: Show load result
-  debug:
-    var: load_ksds_result
+  - name: Show load result
+    debug:
+      var: load_ksds_result
