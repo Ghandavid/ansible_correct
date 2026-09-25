@@ -17,7 +17,7 @@
   tasks:
     - name: Render JCL locally on control node
       ansible.builtin.template:
-        src: "{{ playbook_dir }}/JCL/copy_jcl.j2"
+        src: "{{ playbook_dir }}/templates/copy_jcl.j2"
         dest: "{{ jcl_path }}"
       delegate_to: localhost
 
